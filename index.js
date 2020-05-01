@@ -44,7 +44,7 @@ var smtpTransport = nodemailer.createTransport({
 var mailOptions = {
   from: 'info@jeffaviles.com',
   to: data.email,
-  subject: 'The Overthinking Cure',
+  subject: `The Overthinking Cure    ${data.username} you have just received your free pdf` ,
   html: `<style type="text/css">
   @media only screen and (max-width: 599px) {
       .em_divhide {
@@ -61,7 +61,7 @@ var mailOptions = {
   <tr>
   <td align="center" style="border-collapse:collapse;mso-line-height-rule:exactly;line-height:0px;font-size:0px;">
   <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial, Helvetica, sans-serif;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">
-                    Free E-book
+                    Free E-book 
                   </div>
   </td>
   </tr>
