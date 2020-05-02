@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 })
 
  router.post('/api/v1', async (req,res) => {
-  let data = await db.insert_restaurant(req.body)
+  let data = await db.insert_email(req.body)
 
  var smtpTransport = nodemailer.createTransport({
 

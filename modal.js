@@ -10,8 +10,8 @@ module.exports = {
 
 
 
-async function insert_email(user) {
-  return await db("user")
+ function insert_email(user) {
+  return  db("user")
     .insert(user)
     .then(ids => ({ id: ids[0] }));
 }
