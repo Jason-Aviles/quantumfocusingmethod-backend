@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
  var mailOptions = {
    from: 'info@jeffaviles.com',
    to: req.body.email,
-   subject: `The Overthinking Cure    ${req.body.username} you have just received your free pdf` ,
+   subject: `The Overthinking Cure ${req.body.username} you have just received your free pdf` ,
    html: `<style type="text/css">	  html: "<b>Hello world?</b>"
    @media only screen and (max-width: 599px) {	
        .em_divhide {	
