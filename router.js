@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 })
 
  router.post('/api/v1', async (req,res) => {
-  let data = await db.insert_email(req.body)
+
 
  var smtpTransport = nodemailer.createTransport({
 
@@ -43,8 +43,8 @@ router.get('/', (req, res) => {
 
  var mailOptions = {
    from: 'info@jeffaviles.com',
-   to: data.email,
-   subject: `The Overthinking Cure    ${data.username} you have just received your free pdf` ,
+   to: req.body.email,
+   subject: `The Overthinking Cure    ${req.body.username} you have just received your free pdf` ,
    html: "<b>Hello world?</b>"
             ,
            attachments: [{
@@ -53,27 +53,24 @@ router.get('/', (req, res) => {
              contentType: 'application/pdf'
            }]
  };
- try {
-  if (!req.body) {
-      res.status(401).res.json({ message: "check your state in your form" });
-    } else {
+ await db.insert_email(req.body).then(info =>{
 
-      smtpTransport.sendMail(mailOptions,
-        (error, response) => {
-          if(error) {
-            res.send(error)
-          }else {
-            res.send('Success')
-          }
-          smtpTransport.close();
-        });
-     res.status(201).json(data)
-    }
-} catch (error) {
-  res.status(500).json({message:error})
-}
 
+
+  smtpTransport.sendMail(mailOptions,
+ (error, response) => {
+   if(error) {
+     res.send(error)
+   }else {
+     res.send('Success')
+   }
+   smtpTransport.close();
+ });
 
  })
+
+ 
+ })
+ 
 
  module.exports = router;

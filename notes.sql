@@ -1,12 +1,13 @@
-DROP DATABASE IF EXISTS `heroku_b94342d9f046b8d`;
-CREATE DATABASE `heroku_b94342d9f046b8d`;
-USE `heroku_b94342d9f046b8d`; 
+DROP DATABASE IF EXISTS `heroku_48a1f21dcef3b30`;
+CREATE DATABASE `heroku_48a1f21dcef3b30`;
+USE `heroku_48a1f21dcef3b30`; 
 
 CREATE TABLE user (
     id INTEGER  AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-       email VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(255)  NOT NULL,
+       email VARCHAR(255)  NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
 
 
