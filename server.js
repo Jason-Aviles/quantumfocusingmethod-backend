@@ -8,15 +8,16 @@ require("dotenv").config();
 
 const server = express();
 
+server.use(cors({
+  origin: 'https://thequantumfocusingmethod.com'
+
+}));
 server.use(helmet());
 
 //server.use(morgan("combined"));
 server.use(express.json());
 
-server.use(cors({
-  origin: 'https://thequantumfocusingmethod.com'
 
-}));
 // server.options("*", cors());
 
 
