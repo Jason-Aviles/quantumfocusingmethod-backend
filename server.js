@@ -13,7 +13,10 @@ server.use(helmet());
 //server.use(morgan("combined"));
 server.use(express.json());
 
-server.use(cors());
+server.use(cors({
+  origin: 'https://thequantumfocusingmethod.com'
+
+}));
 // server.options("*", cors());
 
 
