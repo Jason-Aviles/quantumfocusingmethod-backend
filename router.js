@@ -23,8 +23,7 @@ router.post("/api/v1", async (req, res) => {
     //      ciphers:'SSLv3'
     //  }
     // service: 'gmail',
-    host: "smtp.gmail.com",
-    port: 587,
+    service: 'Gmail',
     auth: {
       user: "javiles747@gmail.com",
       pass: "Jeff2020.", // naturally, replace both with your real credentials or an application-specific password
