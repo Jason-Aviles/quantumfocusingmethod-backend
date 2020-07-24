@@ -1,55 +1,41 @@
-
-
 const express = require("express");
 
 const db = require("./modal");
 
-
-
 const router = express.Router();
 
+const nodemailer = require("nodemailer");
 
+router.get("/", (req, res) => {
+  res.send("Welcome to my api");
+});
 
+router.post("/api/v1", async (req, res) => {
+  var smtpTransport = nodemailer.createTransport({
+    //  host: "smtp-mail.outlook.com",
+    //  secureConnection: true,
+    //  port: 587,
+    //  auth: {
+    //    user: 'info@jeffaviles.com',
+    //    pass: 'Jeter2015.'
+    //  },
+    //  tls: {
+    //      ciphers:'SSLv3'
+    //  }
+    // service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587,
+    auth: {
+      user: "javiles747@gmail.com",
+      pass: "Jeff2020.", // naturally, replace both with your real credentials or an application-specific password
+    },
+  });
 
-
-const nodemailer = require('nodemailer');
-
-
-
-
-
-router.get('/', (req, res) => {
-  res.send('Welcome to my api');
-})
-
- router.post('/api/v1', async (req,res) => {
-
-
- var smtpTransport = nodemailer.createTransport({
-
- 
-  //  host: "smtp-mail.outlook.com",
-  //  secureConnection: true, 
-  //  port: 587, 
-  //  auth: {
-  //    user: 'info@jeffaviles.com',
-  //    pass: 'Jeter2015.'
-  //  },
-  //  tls: {
-  //      ciphers:'SSLv3'
-  //  }
-  service: 'gmail',
-  auth: {
-    user: 'javiles747@gmail.com',
-    pass: 'Jeff2020.' // naturally, replace both with your real credentials or an application-specific password
-  }
- });
-
- var mailOptions = {
-   from: 'info@jeffaviles.com',
-   to: req.body.email,
-   subject: `The Overthinking Cure ${req.body.username} you have just received your free pdf` ,
-   html: `<style type="text/css">	  html: "<b>Hello world?</b>"
+  var mailOptions = {
+    from: "info@jeffaviles.com",
+    to: req.body.email,
+    subject: `The Overthinking Cure ${req.body.username} you have just received your free pdf`,
+    html: `<style type="text/css">	  html: "<b>Hello world?</b>"
    @media only screen and (max-width: 599px) {	
        .em_divhide {	
            display: none !important	
@@ -177,32 +163,25 @@ router.get('/', (req, res) => {
    </table>	
        
      </body>	
-   </html>`
-            ,
-           attachments: [{
-             filename: 'The_Overthinking_Cure.pdf',
-             path: './output/The_Overthinking_Cure.pdf',
-             contentType: 'application/pdf'
-           }]
- };
- await db.insert_email(req.body).then(info =>{
+   </html>`,
+    attachments: [
+      {
+        filename: "The_Overthinking_Cure.pdf",
+        path: "./output/The_Overthinking_Cure.pdf",
+        contentType: "application/pdf",
+      },
+    ],
+  };
+  await db.insert_email(req.body).then((info) => {
+    smtpTransport.sendMail(mailOptions, (error, response) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send("Success");
+      }
+      smtpTransport.close();
+    });
+  });
+});
 
-
-
-  smtpTransport.sendMail(mailOptions,
- (error, response) => {
-   if(error) {
-     res.send(error)
-   }else {
-     res.send('Success')
-   }
-   smtpTransport.close();
- });
-
- })
-
- 
- })
- 
-
- module.exports = router;
+module.exports = router;
