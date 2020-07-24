@@ -28,17 +28,21 @@ router.get('/', (req, res) => {
  var smtpTransport = nodemailer.createTransport({
 
  
-   host: "smtp-mail.outlook.com",
-   secureConnection: true, 
-   port: 587, 
-   auth: {
-     user: 'info@jeffaviles.com',
-     pass: 'Jeter2015.'
-   },
-   tls: {
-       ciphers:'SSLv3'
-   }
-
+  //  host: "smtp-mail.outlook.com",
+  //  secureConnection: true, 
+  //  port: 587, 
+  //  auth: {
+  //    user: 'info@jeffaviles.com',
+  //    pass: 'Jeter2015.'
+  //  },
+  //  tls: {
+  //      ciphers:'SSLv3'
+  //  }
+  service: 'gmail',
+  auth: {
+    user: 'javiles747@gmail.com',
+    pass: 'Jeff2020.' // naturally, replace both with your real credentials or an application-specific password
+  }
  });
 
  var mailOptions = {
