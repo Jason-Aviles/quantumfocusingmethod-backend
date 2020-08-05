@@ -23,10 +23,10 @@ router.post("/api/v1", async (req, res) => {
     //      ciphers:'SSLv3'
     //  }
     // service: 'gmail',
-    service: 'Gmail',
+    service: "Gmail",
     auth: {
       user: "javiles747@gmail.com",
-      pass: "Jeff2020.", // naturally, replace both with your real credentials or an application-specific password
+      pass: "Just2ofus.", // naturally, replace both with your real credentials or an application-specific password
     },
   });
 
