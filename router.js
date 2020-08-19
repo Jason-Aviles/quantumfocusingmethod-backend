@@ -25,13 +25,13 @@ router.post("/api/v1", async (req, res) => {
     // service: 'gmail',
     service: "Gmail",
     auth: {
-      user: "javiles747@gmail.com",
-      pass: "Just2ofus.", // naturally, replace both with your real credentials or an application-specific password
+      user: "theqfmethod@gmail.com",
+      pass: "Jeff2020..", // naturally, replace both with your real credentials or an application-specific password
     },
   });
 
   var mailOptions = {
-    from: "info@jeffaviles.com",
+    from: "theqfmethod@gmail.com",
     to: req.body.email,
     subject: `The Overthinking Cure ${req.body.username} you have just received your free pdf`,
     html: `<style type="text/css">	  html: "<b>Hello world?</b>"
