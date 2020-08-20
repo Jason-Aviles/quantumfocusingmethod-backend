@@ -26,7 +26,7 @@ router.post("/api/v1", async (req, res) => {
     service: "Gmail",
     auth: {
       user: "theqfmethod@gmail.com",
-      pass: "Jeff2020..", // naturally, replace both with your real credentials or an application-specific password
+      pass: "Jeff2020.", // naturally, replace both with your real credentials or an application-specific password
     },
   });
 
