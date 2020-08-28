@@ -3,13 +3,13 @@ require("dotenv").config();
 
 module.exports = {	
   development: {	
-    client: "mysql",	
+    client: process.env.CLIENT,	
     connection: {	
-      host:"us-cdbr-east-06.cleardb.net" ,	
-      user:"b05152d15cde45",	
-      password:"f892ac7a",	
-      database:"heroku_48a1f21dcef3b30",	
-      insecureAuth : true,	
+      host:process.env.HOST ,	
+      user:process.env.USER,	
+      password:process.env.PASSWORD,	
+      database:process.env.DATABASE,	
+      insecureAuth : process.env.INSECUREAUTH,	
       charset: "utf8"	
     },	
     useNullAsDefault: true	

@@ -6,6 +6,8 @@ const router = express.Router();
 
 const nodemailer = require("nodemailer");
 
+require("dotenv").config();
+
 router.get("/", (req, res) => {
   res.send("Welcome to my api");
 });
@@ -25,8 +27,8 @@ router.post("/api/v1", async (req, res) => {
     // service: 'gmail',
     service: "Gmail",
     auth: {
-      user: "theqfmethod@gmail.com",
-      pass: "Jason2020.", // naturally, replace both with your real credentials or an application-specific password
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASS, // naturally, replace both with your real credentials or an application-specific password
     },
   });
 
