@@ -1,12 +1,18 @@
 const db = require("./database/dbConfig");
 
 module.exports = {
-  insert_email
+  insert_email,find
 };
 
 
 
 
+
+
+function find(user) {
+  return  db("user")
+   
+}
 
 
 

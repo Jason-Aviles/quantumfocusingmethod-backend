@@ -5,11 +5,11 @@ module.exports = {
   development: {	
     client: "mysql",	
     connection: {	
-      host:process.env.HOST ,	
-      user:process.env.USER,	
-      password:process.env.PASSWORD,	
-      database:process.env.DATABASE,	
-      insecureAuth : process.env.INSECUREAUTH,	
+      host:process.env.NODE_HOST ,	
+      user:process.env.NODE_USER,	
+      password:process.env.NODE_PASSWORD,	
+      database:process.env.NODE_DATABASE,	
+      insecureAuth :true,	
       charset: "utf8"	
     },	
     useNullAsDefault: true	
