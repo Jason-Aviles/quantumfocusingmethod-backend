@@ -12,16 +12,27 @@ router.get("/", (req, res) => {
   res.send("Welcome to my api");
 });
 
-
-
 router.get("/admin", (req, res) => {
- db.find().then(data => res.json(data)).catch(err => res.json({message:err}))
+  db.find()
+    .then((data) => res.json(data))
+    .catch((err) => res.json({ message: err }));
 });
 
 
+router.get("/admin2", (req, res) => {
+  db.find2()
+    .then((data) => res.json(data))
+    .catch((err) => res.json({ message: err }));
+});
+
+router.post("/api/v2", (req, res) => {
+  db.insert_email2(req.body)
+    .then((data) => res.json(data))
+    .catch((err) => res.json({ message: err }));
+});
 
 router.post("/api/v1", async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   var smtpTransport = nodemailer.createTransport({
     //  host: "smtp-mail.outlook.com",
     //  secureConnection: true,
@@ -37,7 +48,7 @@ router.post("/api/v1", async (req, res) => {
     service: "Gmail",
     auth: {
       user: process.env.NODE_EMAIL,
-      pass:process.env.NODE_EMAIL_PASS, // naturally, replace both with your real credentials or an application-specific password
+      pass: process.env.NODE_EMAIL_PASS, // naturally, replace both with your real credentials or an application-specific password
     },
   });
 
